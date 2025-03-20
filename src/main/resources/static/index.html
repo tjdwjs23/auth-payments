@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
     <title>인증 결제 시스템</title>
 </head>
+<script>
+    const requestPayment = async () => {
+        console.log("requestPayment");
+        const response = PortOne.requestPayment({
+            // Store ID 설정
+            storeId: "store-c896535f-9769-4c48-9ee2-f2b8a4d72bb4",
+            // 채널 키 설정
+            channelKey: "channel-key-de48c8b5-354d-42ba-981c-3cffab8a6821",
+            paymentId: `payment123`,
+            orderName: "나이키 와플 트레이너 2 SD",
+            totalAmount: 1000,
+            currency: "CURRENCY_KRW",
+            payMethod: "CARD",
+            customer: {
+                fullName: "포트원",
+                phoneNumber: "010-0000-1234",
+                email: "test@portone.io",
+            },
+        });
+
+        console.log(response);
+    }
+</script>
 <body>
 <h1>인증 결제 시스템</h1>
-<input type="text" id="paymentsAmount" placeholder="결제 금액"> <button onclick="requestPay()">결제 요청</button>
+<input type="text" id="paymentsAmount" placeholder="결제 금액"> <button onclick="requestPayment()">결제 요청</button>
 <br />
 <br />
 <button onclick="requestAuth()">인증 요청</button> <br>
