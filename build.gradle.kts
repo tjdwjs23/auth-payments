@@ -31,9 +31,8 @@ dependencies {
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
-    // Spring Data R2DBC
+    // Spring Data
     val queryDslVersion = dependencyManagement.importedProperties["querydsl.version"]
     implementation("com.querydsl:querydsl-jpa:$queryDslVersion:jakarta")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
@@ -42,16 +41,6 @@ dependencies {
     // Validator
     implementation("org.hibernate.validator:hibernate-validator:7.0.2.Final")
     implementation("jakarta.validation:jakarta.validation-api:3.0.1")
-
-    // Spring Security
-    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
-    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
-    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
-    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
-    implementation("org.springframework.boot:spring-boot-starter-security")
-
-    // Swagger
-    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.3.0")
 
     // Kotlin Logging
     implementation("io.github.oshai:kotlin-logging-jvm:5.1.1")
