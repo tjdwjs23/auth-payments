@@ -12,8 +12,6 @@ class AuthController {
     @PostMapping
     fun auth(@RequestBody request: AuthRequest): ResponseEntity<String> {
         log.info { "auth with identityVerificationId: ${request.identityVerificationId}" }
-        // 추가적인 인증 로직을 여기에 구현합니다.
-
         return ResponseEntity.ok("인증 성공")
     }
 }
