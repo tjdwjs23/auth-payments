@@ -37,10 +37,13 @@
     }
 
     const requestAuth = async () => {
+
+        const identityVerificationId = `identity-verification-${new Date().getTime()}`;
+
         const response = PortOne.requestIdentityVerification({
             // 고객사 storeId로 변경해주세요.
             storeId: "store-c896535f-9769-4c48-9ee2-f2b8a4d72bb4",
-            identityVerificationId: `identity-verification-${new Date().getTime()}`,
+            identityVerificationId: identityVerificationId,
             // 연동 정보 메뉴의 채널 관리 탭에서 확인 가능합니다.
             channelKey: "channel-key-bdce69d8-7e0c-4a45-ba41-ebbf6ffe0612"
         });
@@ -50,8 +53,16 @@
             return alert(response.message);
         }
 
+        const verificationResult = await fetch("/v1/auth", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                identityVerificationId,
+            }),
+        });
 
-        console.log(response);
+
+        console.log(verificationResult);
     }
 </script>
 <body>
